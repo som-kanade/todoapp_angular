@@ -1,0 +1,14 @@
+<div class="main">
+
+  <h1>To do List</h1>
+  <div class="addItem">
+    <input [(ngModel)]="newItem"  class="addText" placeholder="add task">
+    <button  (keydown)= "enterKey($event)" (click)="pushItem()" >Add</button>
+  </div>
+  <ul>
+    <li *ngFor = "let items of itemList let i=index">
+      {{items}}
+      <span (click)= "removeItem(i)">X</span>
+    </li>
+  </ul>
+</div>
