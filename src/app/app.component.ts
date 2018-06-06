@@ -1,18 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { LocalStoreService } from './local-store.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
-  itemList = ["hit to GYM","buy fruits","order food"];
+  itemList = []
+
+  constructor( private localStorage : LocalStoreService){}
  // itemList = [];
-  
+
+  ngOnInit(){
+    this.itemList = this.localStorage.getList()
+  }
+
   newItem = "";
 
-  // function to add item to list 
+
+  // function to add item to list
    pushItem = () => {
 
      /*if(this.newItem == ""){
@@ -20,7 +28,7 @@ export class AppComponent {
      }*/
 
      if(this.newItem != "") {
-       this.itemList.push(this.newItem);
+       this.localStorage.addItemToList(this.newItem);
        this.newItem = "";
      }
   } // end of pushItem
@@ -33,7 +41,7 @@ export class AppComponent {
 
   // function to remove item from the list
   removeItem = (index) => {
-    this.itemList.splice(index,1);
+    this.localStorage.removeItemFromList(index)
   }
 
 }

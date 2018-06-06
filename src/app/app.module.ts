@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import {LocalStoreService} from "./local-store.service"
 
 @NgModule({
   declarations: [
@@ -13,7 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [LocalStoreService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
